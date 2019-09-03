@@ -22,7 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/cra-test
-/css-test
-/router-test
-/webpack-test
+cra-test/
+css-test/
+router-test/
+webpack-test/

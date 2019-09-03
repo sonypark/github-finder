@@ -7,18 +7,13 @@ const getUserCmps = (users) => {
     return users.map(user => <UserItem key={user.id} user={user}/>)
 };
 
-const Users = ({users, loading}) => {
 
-    if(loading){
-        return <Spinner/>
-    }else {
-        const userCmps = getUserCmps(users);
-        return (
-            <div style={userStyle}>
-                {userCmps}
-            </div>
-        );
-    }
+const Users = ({users, loading}) => {
+    const userCmps = getUserCmps(users);
+    return (loading) ? <Spinner/> :
+        (<div style={userStyle}>
+            {userCmps}
+        </div>)
 };
 
 const userStyle = {
