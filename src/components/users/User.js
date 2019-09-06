@@ -1,16 +1,15 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 import Spinner from '../layout/Spinner'
 import Repos from '../repos/Repos';
 
-class User extends Component {
-    componentDidMount() {
-        this.props.getUser(this.props.match.params.login);
-        this.props.getUserRepos(this.props.match.params.login);
-    }
+const User = ({ user, match, loading, repos, getUser, getUserRepos }) => {
+    useEffect(()=>{
+        getUser(match.params.login);
+        getUserRepos(match.params.login);
+    }, []);
 
-    render() {
         const {
             name,
             company,
@@ -25,9 +24,7 @@ class User extends Component {
             public_repos,
             public_gists,
             hireable
-        } = this.props.user;
-
-        const { loading, repos } = this.props;
+        } = user;
 
         if (loading) return <Spinner/>;
         return (
@@ -76,8 +73,7 @@ class User extends Component {
                 <Repos repos={repos}/>
             </Fragment>
         );
-    }
-}
+};
 
 User.propTypes = {
     user: PropTypes.object.isRequired,
