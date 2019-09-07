@@ -26,3 +26,5 @@ cra-test/
 css-test/
 router-test/
 webpack-test/
+# Local Netlify folder
+.netlify
